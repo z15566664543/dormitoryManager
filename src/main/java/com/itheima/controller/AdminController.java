@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itheima.po.Admin;
-import com.itheima.po.PageInfo;
 import com.itheima.service.AdminService;
 import com.itheima.util.MD5Util;
 
@@ -57,19 +56,6 @@ public class AdminController {
 	public String loginOut(Admin admin, Model model, HttpSession session) {
 		session.invalidate();
 		return "login";
-	}
-
-	/**
-	 * 分页查询
-	 */
-	@RequestMapping(value = "/findAdmin")
-	public String findAdmin(String a_username, String a_describe,Integer pageIndex,
-							Integer a_id ,Integer pageSize, Model model) {
-
-		PageInfo<Admin> ai = adminService.findPageInfo(a_username,a_describe,
-								a_id,pageIndex,pageSize);
-		model.addAttribute("ai",ai);
-		return "admin_list";
 	}
 
 	/**

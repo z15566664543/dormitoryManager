@@ -1,9 +1,7 @@
 package com.itheima.service;
-import com.itheima.po.Admin;
-import com.itheima.po.PageInfo;
-
-
 import java.util.List;
+
+import com.itheima.po.Admin;
 
 /**
  * 用户Service层接口
@@ -14,9 +12,6 @@ public interface AdminService {
 
 	//找到所有所有数据
 	public List<Admin> getAll();
-
-	//分页查询
-	public PageInfo<Admin> findPageInfo(String a_username, String a_describe,Integer a_id, Integer pageIndex, Integer pageSize);
 
 	public int addAdmin(Admin admin);    //添加管理员信息
 	public int deleteAdmin(Integer a_id);   //删除管理员信息

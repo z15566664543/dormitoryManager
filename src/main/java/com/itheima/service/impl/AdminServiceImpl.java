@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.itheima.dao.AdminDao;
 import com.itheima.po.Admin;
-import com.itheima.po.PageInfo;
 import com.itheima.service.AdminService;
 
 /**
@@ -35,23 +34,6 @@ public class AdminServiceImpl implements AdminService {
 		return adminList;
     }
 
-	@Override
-	public PageInfo<Admin> findPageInfo(String a_username, String a_describe,Integer a_id,Integer pageIndex, Integer pageSize) {
-		PageInfo<Admin> pi = new PageInfo<Admin>();
-		pi.setPageIndex(pageIndex);
-		pi.setPageSize(pageSize);
-		//获取总条数
-		Integer totalCount = adminDao.totalCount(a_username,a_describe,a_id);
-		if (totalCount>0){
-			pi.setTotalCount(totalCount);
-			//每一页显示管理员信息数
-			//currentPage = (pageIndex-1)*pageSize  当前页码数减1*最大条数=开始行数
-			List<Admin> adminList =	adminDao.getAdminList(a_username,a_describe,a_id,
-					(pi.getPageIndex()-1)*pi.getPageSize(),pi.getPageSize());
-			pi.setList(adminList);
-		}
-		return pi;
-	}
 
 	//添加管理员信息
 	@Override
