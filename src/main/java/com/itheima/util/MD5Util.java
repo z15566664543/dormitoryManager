@@ -16,6 +16,7 @@ public class MD5Util {
         for (int i = 0; i < b.length; i++)
             resultSb.append(byteToHexString(b[i]));
 
+
         return resultSb.toString();
     }
 
